@@ -25,28 +25,43 @@
         function eliminarAuto() {
             const indice = parseInt(document.getElementById('indiceEliminar').value);
             if (!isNaN(indice) && indice >= 0 && indice < autos.length) {
-                autos.splice(indice, 1);
-                alert('Auto eliminado.');
+                let nuevosAutos = [];
+                for (let i = 0; i < autos.length; i++) {
+                    if (i !== indice) {
+                        nuevosAutos.push(autos[i]);
+                    }
+                }
+
+                autos.length = 0;
+                for (let i = 0; i < nuevosAutos.length; i++) {
+                    autos.push(nuevosAutos[i]);
+                }
+
+                alert('Auto eliminado del stock.');
                 mostrarTodos();
             } else {
                 alert('Índice inválido.');
             }
         }
 
+        function eliminarAutos(){
+            while (autos.length > 0){
+                autos.pop();
+            }
+            alert("Todos los autos fueron eliminados del stock.");
+        }
+
         // Mostrar resultados
         function mostrarResultados(lista) {
-            const ul = document.getElementById('resultadoLista');
-            ul.innerHTML = '';
-
             if (lista.length === 0) {
-                ul.innerHTML = '<li>No se encontraron resultados.</li>';
+                alert('No se encontraron resultados.');
             } else {
+                let mensaje = 'Vehiculos disponibles:\n';
                 for (let i = 0; i < lista.length; i++) {
                     const auto = lista[i];
-                    const li = document.createElement('li');
-                    li.textContent = `[${i}] ${auto.marca} ${auto.modelo} - Año ${auto.año}`;
-                    ul.appendChild(li);
+                    mensaje += `[${i}] ${auto.marca} ${auto.modelo} - Año ${auto.año}\n`;
                 }
+                alert(mensaje);
             }
         }
 
@@ -58,7 +73,14 @@
         // Buscar por marca
         function buscarPorMarca() {
             const marca = document.getElementById('marcaInput').value.trim().toLowerCase();
-            const resultado = autos.filter(auto => auto.marca.toLowerCase() === marca);
+            let resultado = [];
+
+            for (let i = 0; i < autos.length; i++) {
+                if (autos[i].marca.toLowerCase() === marca) {
+                    resultado.push(autos[i]);
+                }
+            }
+
             mostrarResultados(resultado);
         }
 
