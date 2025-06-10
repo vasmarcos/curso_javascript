@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Autos</title>
+</head>
+
+<body>
+    <h1>MV Concesionaria</h1>
+
+    
+
+    <!-- Agregar auto -->
+    <h2>Agregar nuevo auto</h2>
+    <input type="text" id="nuevaMarca" placeholder="Marca">
+    <input type="text" id="nuevoModelo" placeholder="Modelo">
+    <input type="number" id="nuevoAnio" placeholder="Año">
+    <button onclick="agregarAuto()">Agregar Auto</button>
+
+    <!-- Eliminar auto -->
+    <h2>Eliminar auto por índice</h2>
+    <input type="number" id="indiceEliminar" placeholder="Índice del auto">
+    <button onclick="eliminarAuto()">Eliminar</button>
+
+    <!-- Buscar por marca -->
+    <h2>Buscar autos por marca</h2>
+    <input type="text" id="marcaInput" placeholder="Marca (ej: Toyota)">
+    <button onclick="buscarPorMarca()">Buscar</button>
+
+    <!-- Mostrar inventario -->
+    <h2>Vehiculos en stock</h2>
+    <button onclick="mostrarTodos()">Mostrar Todos</button>
+    <ul id="resultadoLista"></ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
