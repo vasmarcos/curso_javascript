@@ -65,6 +65,12 @@
             }
         }
 
+        //limpiar resultados
+        function limpiarResultado(){
+            let input = document.getElementById("marcaInput");
+            input.value = "";
+        }
+
         // Mostrar todos los autos
         function mostrarTodos() {
             mostrarResultados(autos);
@@ -80,7 +86,7 @@
                     resultado.push(autos[i]);
                 }
             }
-
+            limpiarResultado();
             mostrarResultados(resultado);
         }
 
